@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: adcash-nlb
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+    service.beta.kubernetes.io/aws-load-balancer-name: "adcash-lb-dev"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
+    service.beta.kubernetes.io/aws-load-balancer-cross-zone-enabled: "true"
+    service.beta.kubernetes.io/aws-load-balancer-subnets: "subnet-02c2a35473a5f2d93,subnet-0a2beae64ba3d554a"
+    service.beta.kubernetes.io/aws-load-balancer-eip-allocations: "eipalloc-023375b9efe0bc242, eipalloc-094fc0bc0a00d1c26"
+spec:
+  type: LoadBalancer
+  loadBalancerClass: service.k8s.aws/nlb
+  selector:
+    app: adcash
+  ports:
+    - name: web
+      port: 80
+      targetPort: 5000
+      protocol: TCP

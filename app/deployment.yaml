@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adcash
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: adcash
+  template:
+    metadata:
+      labels:
+        app: adcash
+    spec:
+      containers:
+        - name: adcash
+          image: sahardevshr/adcash-task:1
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
