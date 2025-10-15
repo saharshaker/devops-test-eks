@@ -154,7 +154,7 @@ Default dev metrics credentials:
 * pass: `1234`
 
 ---
-Prometheus Scraping Approaches (trade-offs)
+## Prometheus Scraping Approaches (trade-offs)
 
 Several options were considered:
 
@@ -177,7 +177,7 @@ This stack opts for #1 to keep the surface area small and setup straightforward 
 ---
 ## Notes & Recommendations
 
-.tfvars files should not be committed to source control. Store sensitive values (e.g., prometheus_key_name, basic-auth credentials, EIP/Subnet IDs if treated as secrets, etc.) in GitHub Secrets (or your CI/CD secret store) and inject them at runtime.
+.tfvars files should not be committed to source control. I Should Store sensitive values (e.g., prometheus_key_name, basic-auth credentials, EIP/Subnet IDs if treated as secrets, etc.) in GitHub Secrets and inject them at runtime.
 
 For this exercise: the dev .tfvars is committed for grading/demo purposes.
 
